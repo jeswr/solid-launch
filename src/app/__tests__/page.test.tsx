@@ -29,14 +29,14 @@ jest.mock('@/lib/rdfUtils', () => ({
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, ...props }: React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>) => <div {...props}>{children}</div>,
   },
-  AnimatePresence: ({ children }: any) => <>{children}</>,
+  AnimatePresence: ({ children }: React.PropsWithChildren) => <>{children}</>,
 }));
 
 // Mock the AppCard component to avoid nested component issues
 jest.mock('@/components/AppCard', () => {
-  return function MockAppCard({ app }: any) {
+  return function MockAppCard({ app }: { app: { name: string; description: string; category: string } }) {
     return (
       <div>
         <h3>{app.name}</h3>
