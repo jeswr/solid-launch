@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Solid App Launcher
 
-## Getting Started
+A modern web application launcher for the Solid ecosystem, designed to help users discover and access Solid-compatible applications.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Dynamic App Discovery**: Reads application data from RDF sources (both remote and local)
+- **Beautiful UI**: Modern, responsive design following Solid Project branding guidelines
+- **Search & Filter**: Find apps quickly by name, description, or category
+- **Grid & List Views**: Switch between different viewing modes
+- **Category Organization**: Apps are organized by categories like Pod Management, Media & Entertainment, etc.
+- **Automatic Placeholders**: Generates attractive placeholders for apps without images
+
+## Technology Stack
+
+- **Next.js 15**: React framework for production
+- **TypeScript**: Type-safe development
+- **Tailwind CSS**: Utility-first CSS framework
+- **RDF/Turtle**: Semantic data format for app metadata
+- **N3.js**: RDF parsing library
+- **Framer Motion**: Animation library
+- **Lucide Icons**: Modern icon set
+
+## Data Sources
+
+The launcher reads application data from two sources:
+
+1. **Solid Catalog**: Official catalog maintained at `https://github.com/solid/catalog`
+2. **Local Database**: Additional apps defined in `/public/local-apps.ttl`
+
+## RDF Schema
+
+Applications are defined using the following RDF predicates:
+
+```turtle
+@prefix solid: <http://www.w3.org/ns/solid/terms#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+
+<https://example.com/app>
+    a solid:App ;
+    rdfs:label "App Name" ;
+    dct:description "App description" ;
+    foaf:homepage <https://example.com/app> ;
+    schema:category "Category Name" ;
+    schema:image <https://example.com/app/icon.png> .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Install dependencies
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run development server
+npm run dev
 
-## Learn More
+# Build for production
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+# Start production server
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Adding New Apps
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To add new applications to the launcher:
 
-## Deploy on Vercel
+1. Edit `/public/local-apps.ttl`
+2. Add your app following the RDF schema above
+3. The app will appear automatically on next page load
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This app is designed to be deployed at `start.solidproject.org`. It can be deployed on any static hosting service that supports Next.js applications.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is part of the Solid Project and follows the same licensing terms.
