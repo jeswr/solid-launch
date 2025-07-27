@@ -12,7 +12,7 @@
     dct:description "A general Pod Browser by Vincent Tunru" ;
     foaf:homepage <https://penny.vincenttunru.com/> ;
     schema:category "Pod Management" ;
-    schema:image </solid-logo.svg> .
+    schema:image </app-images/penny.svg> .
 
 <https://otto-aa.github.io/solid-filemanager/>
     a solid:App ;
@@ -20,7 +20,7 @@
     dct:description "A Solid app that help you manages files in your Pod" ;
     foaf:homepage <https://otto-aa.github.io/solid-filemanager/> ;
     schema:category "Pod Management" ;
-    schema:image </solid-logo.svg> .
+    schema:image </app-images/solid-file-manager.svg> .
 
 <https://jeff-zucker.github.io/solid-content-manager/>
     a solid:App ;
@@ -28,7 +28,7 @@
     dct:description "File manager and IDE" ;
     foaf:homepage <https://jeff-zucker.github.io/solid-content-manager/> ;
     schema:category "Pod Management" ;
-    schema:image <https://jeff-zucker.github.io/solid-content-manager/icon.png> .
+    schema:image </app-images/solid-ide.svg> .
 
 <https://podpro.dev/>
     a solid:App ;
@@ -44,7 +44,7 @@
     dct:description "Browse and manage the things in your Pod. Based on PodOS" ;
     foaf:homepage <https://browser.pod-os.org/> ;
     schema:category "Pod Management" ;
-    schema:image <https://browser.pod-os.org/icon.png> .
+    schema:image </app-images/podos-browser.svg> .
 
 # Media and Entertainment
 <https://noeldemartin.github.io/media-kraken/>
@@ -53,7 +53,7 @@
     dct:description "Track your media and never miss a beat" ;
     foaf:homepage <https://noeldemartin.github.io/media-kraken/> ;
     schema:category "Media & Entertainment" ;
-    schema:image <https://noeldemartin.github.io/media-kraken/icon.png> .
+    schema:image </app-images/media-kraken.svg> .
 
 <https://me.ryey.icu/solid-media/>
     a solid:App ;
@@ -61,7 +61,7 @@
     dct:description "A movie tracking and sharing application with personalised recommendations" ;
     foaf:homepage <https://me.ryey.icu/solid-media/> ;
     schema:category "Media & Entertainment" ;
-    schema:image <https://me.ryey.icu/solid-media/icon.png> .
+    schema:image </app-images/solidflix.svg> .
 
 # Content and Publishing
 <https://dokie.li/>
@@ -70,7 +70,7 @@
     dct:description "Clientside editor for decentralised article publishing, annotations, and social interactions" ;
     foaf:homepage <https://dokie.li/> ;
     schema:category "Content & Publishing" ;
-    schema:image <https://dokie.li/media/images/dokieli.png> .
+    schema:image </app-images/dokieli.svg> .
 
 <https://scenaristeur.github.io/booklice/>
     a solid:App ;
@@ -78,7 +78,7 @@
     dct:description "Bookmarks app with community sharing" ;
     foaf:homepage <https://scenaristeur.github.io/booklice/> ;
     schema:category "Content & Publishing" ;
-    schema:image <https://scenaristeur.github.io/booklice/icon.png> .
+    schema:image </app-images/booklice.svg> .
 
 # Productivity
 <https://umai.noeldemartin.com>
@@ -87,7 +87,7 @@
     dct:description "Offline-first Recipes Manager" ;
     foaf:homepage <https://umai.noeldemartin.com> ;
     schema:category "Productivity" ;
-    schema:image <https://umai.noeldemartin.com/icon.png> .
+    schema:image </app-images/umai.svg> .
 
 <https://hello.0data.app/solid/>
     a solid:App ;
@@ -95,7 +95,7 @@
     dct:description "Implements simple CRUD operations with the REST API and solid-file-client" ;
     foaf:homepage <https://hello.0data.app/solid/> ;
     schema:category "Productivity" ;
-    schema:image <https://hello.0data.app/icon.png> .
+    schema:image </app-images/0data-hello.svg> .
 
 # Development Tools
 <https://solid.github.io/solid-ui/>
@@ -104,7 +104,7 @@
     dct:description "Browse and edit data in your Solid Pod" ;
     foaf:homepage <https://solid.github.io/solid-ui/> ;
     schema:category "Development Tools" ;
-    schema:image <https://solidproject.org/assets/img/solid-logo.svg> .
+    schema:image </app-images/solid-data-browser.svg> .
 
 <https://solidos.solidcommunity.net/>
     a solid:App ;
@@ -112,7 +112,7 @@
     dct:description "Operating System for Solid" ;
     foaf:homepage <https://solidos.solidcommunity.net/> ;
     schema:category "Development Tools" ;
-    schema:image <https://solidproject.org/assets/img/solid-logo.svg> .
+    schema:image </app-images/solidos.svg> .
 
 # Social and Communication
 <https://liqid.chat/>
@@ -121,7 +121,7 @@
     dct:description "Decentralized chat application" ;
     foaf:homepage <https://liqid.chat/> ;
     schema:category "Social & Communication" ;
-    schema:image <https://liqid.chat/icon.png> .
+    schema:image </app-images/liqid-chat.svg> .
 
 <https://solid.chat/>
     a solid:App ;
@@ -129,4 +129,4 @@
     dct:description "Chat application for Solid" ;
     foaf:homepage <https://solid.chat/> ;
     schema:category "Social & Communication" ;
-    schema:image <https://solid.chat/icon.png> .
+    schema:image </app-images/solid-chat.svg> .

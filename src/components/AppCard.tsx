@@ -21,9 +21,9 @@ export default function AppCard({ app, index }: AppCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+      className="bg-white dark:bg-gray-900 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-200 dark:border-gray-700"
     >
-      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700">
         {hasValidImage ? (
           <Image
             src={app.image!}
@@ -49,11 +49,11 @@ export default function AppCard({ app, index }: AppCardProps) {
       </div>
 
       <div className="p-5">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 line-clamp-1">
           {app.name}
         </h3>
         
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
+        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
           {app.description}
         </p>
 
@@ -69,7 +69,7 @@ export default function AppCard({ app, index }: AppCardProps) {
           </a>
 
           {app.source && (
-            <div className="flex items-center gap-1 text-xs text-gray-500">
+            <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
               <Info className="w-3 h-3" />
               <span>{app.source}</span>
             </div>
