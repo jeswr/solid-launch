@@ -12,6 +12,7 @@ interface AppCardProps {
 
 export default function AppCard({ app, index }: AppCardProps) {
   const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
   const hasValidImage = isValidImageUrl(app.image) && !imageError;
   const appColor = generateAppColor(app.name);
   const initials = generateInitials(app.name);
@@ -25,14 +26,29 @@ export default function AppCard({ app, index }: AppCardProps) {
     >
       <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700">
         {hasValidImage ? (
-          <Image
-            src={app.image!}
-            alt={app.name}
-            fill
-            className="object-cover group-hover:scale-110 transition-transform duration-300"
-            onError={() => setImageError(true)}
-            unoptimized
-          />
+          <>
+            {imageLoading && (
+              <div
+                className="absolute inset-0 flex items-center justify-center text-white font-bold text-4xl"
+                style={{ backgroundColor: appColor }}
+              >
+                {initials}
+              </div>
+            )}
+            <Image
+              src={app.image!}
+              alt={app.name}
+              fill
+              className={`object-cover group-hover:scale-110 transition-transform duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
+              onError={() => {
+                setImageError(true);
+                setImageLoading(false);
+              }}
+              onLoad={() => setImageLoading(false)}
+              unoptimized
+              crossOrigin="anonymous"
+            />
+          </>
         ) : (
           <div
             className="w-full h-full flex items-center justify-center text-white font-bold text-4xl"

@@ -44,6 +44,29 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Safari-specific fixes for form elements */
+input[type="text"],
+input[type="search"],
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Fix for Safari search input */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+/* Ensure inputs are visible in Safari */
+input,
+select {
+  font-size: 16px; /* Prevents zoom on iOS Safari */
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
