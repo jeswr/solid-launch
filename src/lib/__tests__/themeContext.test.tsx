@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen, act, renderHook } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { ThemeProvider, useTheme } from '../themeContext';
 
 describe('ThemeContext', () => {
