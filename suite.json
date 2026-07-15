@@ -1,0 +1,10 @@
+{
+  "$schema": "https://solid.example/suite-tracking/suite.schema.json",
+  "id": "solid-launch",
+  "kind": "app",
+  "name": "Solid App Launcher",
+  "repo": "https://github.com/jeswr/solid-launch",
+  "category": "infrastructure",
+  "maturity": "beta",
+  "visibility": "public"
+}
