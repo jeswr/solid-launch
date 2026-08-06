@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Search, Loader2, Filter, Grid, List, ExternalLink, Moon, Sun } from 'lucide-react';
+import { Search, Loader2, Filter, Grid, List, ExternalLink, Moon, Sun, TrendingUp, BarChart3 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SolidApp, loadAllApps } from '@/lib/rdfUtils';
 import { getCategoryIcon } from '@/lib/imageUtils';
@@ -17,6 +17,15 @@ export default function Home() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [categories, setCategories] = useState<string[]>(['All']);
   const { theme, toggleTheme } = useTheme();
+
+  // Mock data for most used applications
+  const mostUsedApps = [
+    { name: 'Solid Pod Manager', usageCount: 15420, usagePercentage: 28, trend: 'up' },
+    { name: 'Solid Chat', usageCount: 12350, usagePercentage: 22, trend: 'up' },
+    { name: 'Solid File Browser', usageCount: 9875, usagePercentage: 18, trend: 'stable' },
+    { name: 'Solid Calendar', usageCount: 8230, usagePercentage: 15, trend: 'down' },
+    { name: 'Solid Notes', usageCount: 6540, usagePercentage: 12, trend: 'up' },
+  ];
 
   useEffect(() => {
     loadApps();
@@ -160,6 +169,73 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {/* Most Used Applications Section */}
+      <section className="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 py-8 border-b border-gray-200 dark:border-gray-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-6">
+            <BarChart3 className="w-6 h-6 text-[#7C4DFF]" />
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Most Used Applications</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {mostUsedApps.map((app, index) => (
+              <motion.div
+                key={app.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-200 dark:border-gray-700"
+              >
+                <div className="flex items-start justify-between mb-2">
+                  <span className="text-2xl font-bold text-[#7C4DFF]">#{index + 1}</span>
+                  {app.trend === 'up' && (
+                    <TrendingUp className="w-4 h-4 text-green-500" />
+                  )}
+                  {app.trend === 'down' && (
+                    <TrendingUp className="w-4 h-4 text-red-500 transform rotate-180" />
+                  )}
+                  {app.trend === 'stable' && (
+                    <div className="w-4 h-4 bg-gray-400 rounded-full" style={{ height: '2px', marginTop: '8px' }} />
+                  )}
+                </div>
+                
+                <h3 className="font-semibold text-gray-900 dark:text-white text-sm mb-2 line-clamp-2">
+                  {app.name}
+                </h3>
+                
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-gray-600 dark:text-gray-400">Usage</span>
+                    <span className="font-medium text-gray-900 dark:text-white">
+                      {app.usageCount.toLocaleString()}
+                    </span>
+                  </div>
+                  
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${app.usagePercentage}%` }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                      className="bg-[#7C4DFF] h-2 rounded-full"
+                    />
+                  </div>
+                  
+                  <div className="text-xs text-gray-500 dark:text-gray-400 text-right">
+                    {app.usagePercentage}% of total
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Usage data from the last 30 days • Total app launches: 54,415
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
