@@ -35,19 +35,29 @@ export default function AppCard({ app, index }: AppCardProps) {
                 {initials}
               </div>
             )}
-            <Image
-              src={app.image!}
-              alt={app.name}
-              fill
-              className={`object-cover group-hover:scale-110 transition-transform duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
-              onError={() => {
-                setImageError(true);
-                setImageLoading(false);
-              }}
-              onLoad={() => setImageLoading(false)}
-              unoptimized
-              crossOrigin="anonymous"
-            />
+            {app.image?.endsWith('.svg') ? (
+              <img
+                src={app.image}
+                alt={app.name}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                onError={() => setImageError(true)}
+                onLoad={() => setImageLoading(false)}
+              />
+            ) : (
+              <Image
+                src={app.image!}
+                alt={app.name}
+                fill
+                className={`object-cover group-hover:scale-110 transition-transform duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
+                onError={() => {
+                  setImageError(true);
+                  setImageLoading(false);
+                }}
+                onLoad={() => setImageLoading(false)}
+                unoptimized
+                crossOrigin="anonymous"
+              />
+            )}
           </>
         ) : (
           <div

@@ -45,6 +45,11 @@ export function getCategoryIcon(category: string): string {
 export function isValidImageUrl(url: string | undefined): boolean {
   if (!url) return false;
   
+  // Allow relative URLs that start with /
+  if (url.startsWith('/')) {
+    return true;
+  }
+  
   try {
     const urlObj = new URL(url);
     return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
