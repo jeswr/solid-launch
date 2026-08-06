@@ -90,4 +90,26 @@ describe('AppCard', () => {
     const image = screen.getByAltText('Test Application');
     expect(image).toHaveAttribute('crossorigin', 'anonymous');
   });
+
+  it('shows the loaded image and hides placeholder after load event', async () => {
+    render(<AppCard app={mockApp} index={0} />);
+
+    const image = screen.getByAltText('Test Application');
+
+    // Placeholder with initials should be visible initially
+    expect(screen.getByText('TA')).toBeInTheDocument();
+
+    // Fire the synthetic load event to simulate a successful image download
+    await act(async () => {
+      const loadEvent = new Event('load', { bubbles: true });
+      image.dispatchEvent(loadEvent);
+    });
+
+    await waitFor(() => {
+      // Placeholder should disappear once the image has loaded
+      expect(screen.queryByText('TA')).not.toBeInTheDocument();
+      // Image should now have full opacity indicating it is visible
+      expect(image.className).toContain('opacity-100');
+    });
+  });
 });

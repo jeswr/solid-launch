@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { ExternalLink, Info } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SolidApp } from '@/lib/rdfUtils';
-import { generateAppColor, generateInitials, isValidImageUrl } from '@/lib/imageUtils';
+import { generateAppColor, generateInitials } from '@/lib/imageUtils';
 
 interface AppCardProps {
   app: SolidApp;
@@ -13,7 +13,8 @@ interface AppCardProps {
 export default function AppCard({ app, index }: AppCardProps) {
   const [imageError, setImageError] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
-  const hasValidImage = isValidImageUrl(app.image) && !imageError;
+  // Attempt to render an image whenever a URL is provided. If loading fails, we fall back gracefully via the onError handler.
+  const hasValidImage = Boolean(app.image) && !imageError;
   const appColor = generateAppColor(app.name);
   const initials = generateInitials(app.name);
 
